@@ -7,16 +7,26 @@ body{
     background-color: #4da9be;
 }
 
-.main{
-    height: 100vh;
-}
-
 
 .form-container{
     width: 800px;
     background-color: #baafd1;
     border-radius: 10px;
     padding: 30px;
+    margin: 30px;
+}
+
+.text-field textarea{
+    width: 598px;
+    height: 100px;
+}
+
+.mb-3 label{
+    width: 180px;
+}
+
+.mb-3{
+    display: flex;
 }
 
 footer{

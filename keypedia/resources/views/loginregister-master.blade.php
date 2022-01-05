@@ -27,7 +27,6 @@
               <li class="nav-item d-flex align-items-center">
                 <label class="nav-link">{{ date('D, d-M-Y') }}</label>
               </li>
-              {{-- time --}}
             </ul>
           </div>
         </div>
@@ -36,7 +35,6 @@
       <div class="main-content">
         @yield('content')
       </div>
-
 
       <footer class="mt-auto d-flex align-items-center justify-content-center ">
             Made by Keypedia
