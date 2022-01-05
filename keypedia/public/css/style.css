@@ -34,4 +34,29 @@ footer{
     background-color: white;
 }
 
+.category-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    background-color: #baafd1;
+}
+
+.card-body{
+    border:1px solid gainsboro;
+    margin: 10px;
+    color: #295863;
+}
+
+.card-body img{
+    width: 220px;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+
 
