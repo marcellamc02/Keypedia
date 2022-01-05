@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('homeGuest');
 });
 Route::get('/register', function () {
     return view('register');
