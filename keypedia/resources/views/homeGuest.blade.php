@@ -26,7 +26,7 @@
                 <a href="">
                     <li class="card mt-3" style="width: 280px ">
                         <div class="card-body text-center" >
-                            <p>category1</p>
+                            <p>category2</p>
                             <img src="{{asset('storage/assets/61KeyBoard-img.jpg')}}" alt="">
                         </div>
                     </li>
@@ -35,7 +35,7 @@
                 <a href="">
                     <li class="card mt-3" style="width: 280px ">
                         <div class="card-body text-center" >
-                            <p>category1</p>
+                            <p>category3</p>
                             <img src="{{asset('storage/assets/61KeyBoard-img.jpg')}}" alt="">
                         </div>
                     </li>
@@ -44,7 +44,7 @@
                 <a href="">
                     <li class="card mt-3" style="width: 280px ">
                         <div class="card-body text-center" >
-                            <p>category1</p>
+                            <p>category4</p>
                             <img src="{{asset('storage/assets/61KeyBoard-img.jpg')}}" alt="">
                         </div>
                     </li>
