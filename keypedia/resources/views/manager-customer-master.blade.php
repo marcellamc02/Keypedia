@@ -32,13 +32,10 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      MANAGER
+                      @yield('rolename')
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item" href="#">Add Keyboard</a></li>
-                      <li><a class="dropdown-item" href="#">Manage Categories</a></li>
-                      <li><a class="dropdown-item" href="#">Change Password</a></li>
-                      <li><a class="dropdown-item" href="#">Logout</a></li>
+                      @yield('dropdown-menu')
                     </ul>
                 </li>
               <li class="nav-item d-flex align-items-center">
