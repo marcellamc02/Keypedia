@@ -26,3 +26,7 @@ Route::get('/login', function () {
 Route::get('/home-manager', function () {
     return view('homeManager');
 });
+
+Route::get('/home-customer', function () {
+    return view('homeCustomer');
+});
