@@ -1,4 +1,4 @@
-@extends('loginregister-master')
+@extends('guest-master')
 
 @section('title') Home | Keypedia @endsection
 

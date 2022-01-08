@@ -1,4 +1,4 @@
-@extends('loginregister-master')
+@extends('guest-master')
 
 @section('title') Login | Keypedia @endsection
 
@@ -8,7 +8,7 @@
     <div class="form-container ">
         <p class="fw-bold fs-4">Login</p>
         <hr>
-        <form>
+        <form action="" method="POST">
             @csrf
             <div class="mb-3">
               <label for="email-text" class="form-label">Email address</label>
