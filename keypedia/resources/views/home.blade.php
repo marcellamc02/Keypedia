@@ -1,17 +1,10 @@
-@extends('manager-customer-master')
+@extends('master')
 
 @section('title') Home | Keypedia @endsection
 
 @section('content')
 
-    @section('rolename') MANAGER @endsection
 
-    @section('dropdown-menu')
-    <li><a class="dropdown-item" href="#">Add Keyboard</a></li>
-    <li><a class="dropdown-item" href="#">Manage Categories</a></li>
-    <li><a class="dropdown-item" href="#">Change Password</a></li>
-    <li><a class="dropdown-item" href="#">Logout</a></li>
-    @endsection
 
     <div class="text-center mt-3">
         <h3>Welcome to Keypedia</h3>
@@ -62,5 +55,5 @@
             </ul>
         </div>
     </div>
-    
+
 @endsection

@@ -19,25 +19,56 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Categories
-                    </a>
+                    </a> --}}
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         {{-- pake for --}}
-                      <li><a class="dropdown-item" href="#">cat1</a></li>
+                      {{-- <li><a class="dropdown-item" href="#">cat1</a></li>
                       <li><a class="dropdown-item" href="#">cat2</a></li>
                       <li><a class="dropdown-item" href="#">cat3</a></li>
-                      <li><a class="dropdown-item" href="#">cat4</a></li>
+                      <li><a class="dropdown-item" href="#">cat4</a></li> --}}
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
+
+
+                {{-- untuk manager --}}
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      @yield('rolename')
+                      MANAGER
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      @yield('dropdown-menu')
+                        <li><a class="dropdown-item" href="#">Add Keyboard</a></li>
+                        <li><a class="dropdown-item" href="#">Manage Categories</a></li>
+                        <li><a class="dropdown-item" href="#">Change Password</a></li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </li> --}}
+
+                {{-- untuk admin --}}
+                {{-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      USER
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">My Cart</a></li>
+                        <li><a class="dropdown-item" href="#">Transaction History</a></li>
+                        <li><a class="dropdown-item" href="#">Change Password</a></li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </li> --}}
+
+                <li class="nav-item">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Register</a>
+                        </li>
                     </ul>
                 </li>
+
               <li class="nav-item d-flex align-items-center">
                 <label class="nav-link">{{ date('D, d-M-Y') }}</label>
               </li>
