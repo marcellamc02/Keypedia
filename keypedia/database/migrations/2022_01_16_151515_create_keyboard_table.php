@@ -20,7 +20,7 @@ class CreateKeyboardTable extends Migration
             $table->string('name');
             $table->longText('description');
             $table->string('imgPath');
-            $table->bigInteger('price');
+            $table->integer('price');
             $table->timestamps();
         });
     }
