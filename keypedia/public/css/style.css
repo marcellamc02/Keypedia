@@ -21,13 +21,6 @@ body{
     height: 100px;
 }
 
-.mb-3 label{
-    width: 180px;
-}
-
-.mb-3{
-    display: flex;
-}
 
 footer{
     height: 50px;

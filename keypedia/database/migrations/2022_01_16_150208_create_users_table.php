@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->string('gender');
             $table->string('dob');
-            $table->foreignId('role_id')->constrained('roles');
+            $table->foreignId('role_id')->default(2)->constrained('roles');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -18,24 +18,26 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
+
+                @auth
                 <li class="nav-item dropdown">
-                    {{-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Categories
-                    </a> --}}
+                    </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         {{-- pake for --}}
-                      {{-- <li><a class="dropdown-item" href="#">cat1</a></li>
+                      <li><a class="dropdown-item" href="#">cat1</a></li>
                       <li><a class="dropdown-item" href="#">cat2</a></li>
                       <li><a class="dropdown-item" href="#">cat3</a></li>
-                      <li><a class="dropdown-item" href="#">cat4</a></li> --}}
+                      <li><a class="dropdown-item" href="#">cat4</a></li>
                     </ul>
                 </li>
 
-
                 {{-- untuk manager --}}
-                {{-- <li class="nav-item dropdown">
+                @if (Auth::user()->role_id == 1)
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      MANAGER
+                        {{ Auth::user()->username }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="#">Add Keyboard</a></li>
@@ -43,21 +45,25 @@
                         <li><a class="dropdown-item" href="#">Change Password</a></li>
                         <li><a class="dropdown-item" href="#">Logout</a></li>
                     </ul>
-                </li> --}}
+                </li>
+                @endif
 
-                {{-- untuk admin --}}
-                {{-- <li class="nav-item dropdown">
+                {{-- untuk user --}}
+                @if (Auth::user()->role_id == 2)
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      USER
+                        {{ Auth::user()->username }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="#">My Cart</a></li>
                         <li><a class="dropdown-item" href="#">Transaction History</a></li>
                         <li><a class="dropdown-item" href="#">Change Password</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
                     </ul>
-                </li> --}}
+                </li>
+                @endif
 
+                @else
                 <li class="nav-item">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -68,6 +74,9 @@
                         </li>
                     </ul>
                 </li>
+
+                @endauth
+
 
               <li class="nav-item d-flex align-items-center">
                 <label class="nav-link">{{ date('D, d-M-Y') }}</label>
