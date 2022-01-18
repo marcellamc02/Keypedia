@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KeyboardController;
+use App\Http\Controllers\KeyboardDetailsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +21,7 @@ Route::get('/home', [HomeController::class, 'showHome'])->name('home.list');
 
 Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory']);
 
-// Route::get('/category', function() {
-//     return view('category');
-// });
+Route::get('/detailsKeyboard/{keyboardId}', [KeyboardDetailsController::class, 'showKeyboardDetails']);
 
 Route::get('/register', function () {
     return view('register');

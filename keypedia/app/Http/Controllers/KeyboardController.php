@@ -13,7 +13,8 @@ class KeyboardController extends Controller
                                 ->join('keyboard', 'categories.id', '=', 'keyboard.categories_id')
                                 ->where('categories.id', 'LIKE', $categoryId)
                                 ->get();
+        $categoryName = Category::find($categoryId)->name;
 
-        return view('category',['keyboardCategories' => $keyboardCategory]);
+        return view('category',['keyboardCategories' => $keyboardCategory , 'categoryName' => $categoryName]);
     }
 }
