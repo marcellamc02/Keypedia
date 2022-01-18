@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Keyboard extends Model
 {
-    // use HasFactory;
-    // protected $table = 'keyboard';
+    use HasFactory;
+    protected $table = 'keyboard';
 
-    // public function category() {
-    //     return $this->belongsTo(Category::class);
+    public function category() {
+        return $this->belongsTo(Category::class);
+    }
+
+    // public function carts() {
+    //     return $this->belongsToMany(Cart::class);
     // }
 }

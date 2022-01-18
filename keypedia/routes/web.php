@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KeyboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'showHome'])->name('home.list');
 Route::get('/home', [HomeController::class, 'showHome'])->name('home.list');
+
+Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory']);
+
+// Route::get('/category', function() {
+//     return view('category');
+// });
 
 Route::get('/register', function () {
     return view('register');
