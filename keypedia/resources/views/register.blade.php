@@ -8,7 +8,7 @@
     <div class="form-container">
         <p class="fw-bold fs-4">Register</p>
         <hr>
-        <form action="" method="POST">
+        <form action="\register" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="email-text" class="form-label">Username</label>
