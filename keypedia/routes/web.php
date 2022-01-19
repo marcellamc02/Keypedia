@@ -19,19 +19,27 @@ use Illuminate\Support\Facades\Route;
 */
 Route::redirect('/', '/home');
 Route::get('/home', [HomeController::class, 'showHome'])->name('home.list');
-Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory']);
-
+Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory'])->name('showKeyboardCategory');
 
 Route::middleware('manager')->group(function(){
     Route::get('/addKeyboard', [KeyboardController::class, 'showAddKeyboard'])->name('showAddKeyboard');
     Route::post('/addKeyboard', [KeyboardController::class, 'addKeyboard']);  
+    Route::get('/manageCategories', [KeyboardController::class, 'showManageCategory'])->name('showManageCategory');
+    Route::post('/manageCategories/update/{categoryId}', [KeyboardController::class, 'updateCategory']);
+    Route::post('/manageCategories/delete/{categoryId}', [KeyboardController::class, 'deleteCategory']);
+    Route::get('/updateCategory/{categoryId}', [KeyboardController::class, 'showManageCategory']);
+    Route::put('/updateCategory/{categoryId}', [KeyboardController::class, 'updateCategory']);
 });
 
 Route::middleware('user')->group(function(){
-    Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory']);
+    Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory'])->name('showKeyboardCategory');
 });
 
 Route::get('/detailsKeyboard/{keyboardId}', [KeyboardDetailsController::class, 'showKeyboardDetails']);
+
+Route::get('/delete-category', function(){
+    return view('manageCategories');
+})->name('manageCategories');
 
 Route::get('/register', function () {
     return view('register');

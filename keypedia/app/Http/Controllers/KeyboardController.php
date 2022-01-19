@@ -29,12 +29,19 @@ class KeyboardController extends Controller
         return view('addKeyboard', ['categories' => $showCategories]);
     }
 
+    public function showManageCategory()
+    {
+        $showCategories = Category::all();
+
+        return view('manageCategories', ['categories' => $showCategories]);
+    }
+
     // for MANAGER
     public function addKeyboard(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'categories_id' => 'required',
-            'name' => 'required|unique|min:5', 
+            'name' => 'required|min:5', 
             'price' => 'required|integer|min:30',
             'description' => 'required|min:20',
             'imgPath' => 'required'
@@ -48,14 +55,7 @@ class KeyboardController extends Controller
         $keyboard->name = $request->name;
         $keyboard->price = $request->price;
         $keyboard->description = $request->description;
-        
-        $file = $request->file('imgPath');
-        $fileName = uniqid().File::extension($file->getClientOriginalName());
-        $relativePath = 'assets/img/'. date('Y') . '/' . date('m');
-        $destinationPath = public_path().'/'.$relativePath;
-        $file->move($destinationPath, $fileName);
-
-        $keyboard->imgPath = $relativePath.'/'.$fileName;
+        $keyboard->imgPath = $request->imgPath;
         $keyboard->save();
 
         return redirect('/home')->with('success', 'Item successfully added.');
@@ -107,5 +107,22 @@ class KeyboardController extends Controller
         $selected->imgPath = $request->imgPath;
 
         return back()->with('success', 'Category successfully updated.');
+    }
+
+    public function deleteCategory(Request $request)
+    {
+        $selected = Category::find($request->id);
+        if($selected == null)
+        {
+            return back(404);
+        }
+
+        if(File::exists($selected->imgPath)) {
+            File::delete($selected->imgPath);
+        }
+
+        $selected->delete();
+        
+        return back()->with('success', 'Category successfully deleted.');
     }
 }

@@ -14,7 +14,7 @@
                 {{-- pake for --}}
                 @foreach($categories as $category)
                 <a href="/category/{{$category->id}}">
-                    <li class="card mt-3 text-decoration-none" style="width: 280px ">
+                    <li class="card mt-3 text-decoration-none" style="width: 350px ">
                         <div class="card-body text-center" >
                             <p class="fw-bold">{{$category->name}}</p>
                             <img src="{{asset($category->imgPath)}}" alt="">

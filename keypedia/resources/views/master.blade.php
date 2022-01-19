@@ -19,6 +19,8 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
 
+              @auth
+              @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Categories
@@ -26,12 +28,12 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         {{-- pake for --}}
                       @foreach($categories as $category)
-                      <li><a class="dropdown-item" href="/category/{{$category->id}}">{{$category->name}}</a></li>
+                      <li><a class="dropdown-item" href="{{route('showKeyboardCategory', ['categoryId' => $category->id])}}">{{$category->name}}</a></li>
                       @endforeach
                     </ul>
-                </li>
+                  </li>
+                @endif
 
-                @auth
                 {{-- untuk manager --}}
                 @if (Auth::user()->role_id == 1)
                 <li class="nav-item dropdown">
@@ -39,8 +41,8 @@
                         {{ Auth::user()->username }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="{{route('showAddKeyboard')}}">Add Keyboard</a></li>
-                        <li><a class="dropdown-item" href="#">Manage Categories</a></li>
+                      <li><a class="dropdown-item" href="{{route('showAddKeyboard')}}">Add Keyboard</a></li>
+                        <li><a class="dropdown-item" href="{{route('showManageCategory')}}">Manage Categories</a></li>
                         <li><a class="dropdown-item" href="#">Change Password</a></li>
                         <form action="{{route('logout')}}" method="post">
                           @csrf
