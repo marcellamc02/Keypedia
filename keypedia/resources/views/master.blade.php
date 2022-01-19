@@ -19,7 +19,6 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
 
-                @auth
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Categories
@@ -32,6 +31,7 @@
                     </ul>
                 </li>
 
+                @auth
                 {{-- untuk manager --}}
                 @if (Auth::user()->role_id == 1)
                 <li class="nav-item dropdown">
@@ -39,7 +39,7 @@
                         {{ Auth::user()->username }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Add Keyboard</a></li>
+                        <li><a class="dropdown-item" href="{{route('showAddKeyboard')}}">Add Keyboard</a></li>
                         <li><a class="dropdown-item" href="#">Manage Categories</a></li>
                         <li><a class="dropdown-item" href="#">Change Password</a></li>
                         <form action="{{route('logout')}}" method="post">

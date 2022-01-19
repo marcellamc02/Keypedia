@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Category;
+use App\Models\Keyboard;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class KeyboardController extends Controller
 {
@@ -16,5 +20,92 @@ class KeyboardController extends Controller
         $categoryName = Category::find($categoryId)->name;
 
         return view('category',['keyboardCategories' => $keyboardCategory , 'categoryName' => $categoryName]);
+    }
+
+    public function showAddKeyboard()
+    {
+        $showCategories = Category::all();
+
+        return view('addKeyboard', ['categories' => $showCategories]);
+    }
+
+    // for MANAGER
+    public function addKeyboard(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'categories_id' => 'required',
+            'name' => 'required|unique|min:5', 
+            'price' => 'required|integer|min:30',
+            'description' => 'required|min:20',
+            'imgPath' => 'required'
+        ]);
+
+        if($validator->fails())
+            return back()->withErrors($validator);
+
+        $keyboard = new Keyboard;
+        $keyboard->categories_id = $request->categories_id;
+        $keyboard->name = $request->name;
+        $keyboard->price = $request->price;
+        $keyboard->description = $request->description;
+        
+        $file = $request->file('imgPath');
+        $fileName = uniqid().File::extension($file->getClientOriginalName());
+        $relativePath = 'assets/img/'. date('Y') . '/' . date('m');
+        $destinationPath = public_path().'/'.$relativePath;
+        $file->move($destinationPath, $fileName);
+
+        $keyboard->imgPath = $relativePath.'/'.$fileName;
+        $keyboard->save();
+
+        return redirect('/home')->with('success', 'Item successfully added.');
+    }
+
+    public function deleteKeyboard(Request $request)
+    {
+        $selected = Keyboard::find($request->id);
+        if($selected == null)
+        {
+            return back(404);
+        }
+        
+        if(File::exists($selected->imgPath)) {
+            File::delete($selected->imgPath);
+        }
+        $selected->delete();
+
+        return redirect('/home')->with('success', 'Item successfully deleted');
+    }
+
+    public function updateKeyboard(Request $request)
+    {
+        $selected = Keyboard::find($request->id);
+        if($selected == null)
+        {
+            return back(404);
+        }
+
+        $selected->categories_id = $request->categories_id;
+        $selected->name = $request->name;
+        $selected->price = $request->price;
+        $selected->description = $request->description;
+        $selected->imgPath = $request->imgPath;
+        $selected->save();
+
+        return back()->with('success', 'Item successfully updated.');
+    }
+
+    public function updateCategory(Request $request)
+    {
+        $selected = Category::find($request->id);
+        if($selected == null)
+        {
+            return back(404);
+        }
+
+        $selected->name = $request->name;
+        $selected->imgPath = $request->imgPath;
+
+        return back()->with('success', 'Category successfully updated.');
     }
 }

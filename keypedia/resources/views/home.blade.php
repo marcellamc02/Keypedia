@@ -7,7 +7,6 @@
         <h3 class="fw-bold">Welcome to Keypedia</h3>
         <p>Best Keyboard and Keycaps shop</p>
     </div>
-
     <div class="container Categories-container ">
         <h4 class="text-center mt-4 fw-bold">Categories</h4>
         <div class="category-list-container mt-4">

@@ -17,12 +17,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [HomeController::class, 'showHome'])->name('home.list');
+Route::redirect('/', '/home');
 Route::get('/home', [HomeController::class, 'showHome'])->name('home.list');
+Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory']);
+
 
 Route::middleware('manager')->group(function(){
-    Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory']);
+    Route::get('/addKeyboard', [KeyboardController::class, 'showAddKeyboard'])->name('showAddKeyboard');
+    Route::post('/addKeyboard', [KeyboardController::class, 'addKeyboard']);  
 });
 
 Route::middleware('user')->group(function(){
@@ -37,7 +39,6 @@ Route::get('/register', function () {
 Route::get('/login', function () {
     return view('login');
 });
-
 Route::post('/register',[RegisterController::class, 'register'])->name('register');
 Route::post('/login',[LoginController::class, 'login'])->name('login');
 
