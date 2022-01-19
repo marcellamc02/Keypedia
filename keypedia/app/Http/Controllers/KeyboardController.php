@@ -39,18 +39,6 @@ class KeyboardController extends Controller
         return view('category',['keyboardCategories' => $keyboardCategory , 'categoryName' => $categoryName, 'categories'=>$categoryList, 'categoryId'=>$categoryId]);
     }
 
-    // public function search(Request $request, $categoryId){
-    //     $categoryList = Category::all();
-    //     $keyboardCategory = DB::table('categories')
-    //                             ->join('keyboard', 'categories.id', '=', 'keyboard.categories_id')
-    //                             ->where('categories.id', 'LIKE', $categoryId)
-    //                             ->where('keyboard.name','LIKE','%'.$request->search.'%')
-    //                             ->paginate(8);
-    //     $categoryName = Category::find($categoryId)->name;
-    //     dd($keyboardCategory,$request->search,$categoryId);
-
-    //     return view('category',['keyboardCategories' => $keyboardCategory , 'categoryName' => $categoryName, 'categories'=>$categoryList, 'categoryId'=>$categoryId]);
-    // }
 
     public function showAddKeyboard()
     {
@@ -102,6 +90,7 @@ class KeyboardController extends Controller
 
     public function deleteKeyboard(Request $request)
     {
+        $showCategories = Category::all();
         $selected = Keyboard::find($request->id);
         if($selected == null)
         {
@@ -113,11 +102,12 @@ class KeyboardController extends Controller
         }
         $selected->delete();
 
-        return redirect('/home')->with('success', 'Item successfully deleted');
+        return back()->with('success', 'Item successfully deleted')->with('categories',$showCategories);
     }
 
     public function updateKeyboard(Request $request)
     {
+        $showCategories = Category::all();
         $selected = Keyboard::find($request->id);
         if($selected == null)
         {
@@ -131,11 +121,12 @@ class KeyboardController extends Controller
         $selected->imgPath = $request->imgPath;
         $selected->save();
 
-        return back()->with('success', 'Item successfully updated.');
+        return back()->with('success', 'Item successfully updated.')->with('categories',$showCategories);
     }
 
     public function updateCategory(Request $request)
     {
+        $showCategories = Category::all();
         $selected = Category::find($request->id);
         if($selected == null)
         {
@@ -145,21 +136,28 @@ class KeyboardController extends Controller
         $selected->name = $request->name;
         $selected->imgPath = $request->imgPath;
 
-        return back()->with('success', 'Category successfully updated.');
+        $categoryName = Category::find($request->id)->name;
+
+        // return back()->with('success', 'Category successfully updated.');
+        return view('manageCategories',['categories'=>$showCategories,'categoryName'=>$categoryName]);
     }
 
     public function deleteCategory(Request $request)
     {
+        $showCategories = Category::all();
         $selected = Category::find($request->id);
+
+        dd($selected,$request->id);
         if($selected == null)
         {
             return back(404);
         }
 
+
+
         if(File::exists($selected->imgPath)) {
             File::delete($selected->imgPath);
         }
-
         $selected->delete();
 
         return back()->with('success', 'Category successfully deleted.');
