@@ -20,8 +20,12 @@ class LoginController extends Controller
         return redirect()->back()->with('fail','Invalid Login Information!');
     }
 
-    public function logout(){
+    public function logout(Request $request){
         Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        
         return redirect()->route('home.list');
     }
 }

@@ -26,10 +26,9 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         {{-- pake for --}}
-                      <li><a class="dropdown-item" href="#">cat1</a></li>
-                      <li><a class="dropdown-item" href="#">cat2</a></li>
-                      <li><a class="dropdown-item" href="#">cat3</a></li>
-                      <li><a class="dropdown-item" href="#">cat4</a></li>
+                      @foreach($categories as $category)
+                      <li><a class="dropdown-item" href="/category/{{$category->id}}">{{$category->name}}</a></li>
+                      @endforeach
                     </ul>
                 </li>
 
@@ -43,7 +42,10 @@
                         <li><a class="dropdown-item" href="#">Add Keyboard</a></li>
                         <li><a class="dropdown-item" href="#">Manage Categories</a></li>
                         <li><a class="dropdown-item" href="#">Change Password</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <form action="{{route('logout')}}" method="post">
+                          @csrf
+                        <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
+                        </form>
                     </ul>
                 </li>
                 @endif
@@ -58,7 +60,10 @@
                         <li><a class="dropdown-item" href="#">My Cart</a></li>
                         <li><a class="dropdown-item" href="#">Transaction History</a></li>
                         <li><a class="dropdown-item" href="#">Change Password</a></li>
+                        <form action="{{route('logout')}}" method="post">
+                          @csrf
                         <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
+                        </form>
                     </ul>
                 </li>
                 @endif
