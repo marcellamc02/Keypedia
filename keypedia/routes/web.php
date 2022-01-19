@@ -21,7 +21,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'showHome'])->name('home.list');
 Route::get('/home', [HomeController::class, 'showHome'])->name('home.list');
 
-Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory']);
+Route::middleware('manager')->group(function(){
+    Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory']);
+});
+
+Route::middleware('user')->group(function(){
+    Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory']);
+});
 
 Route::get('/detailsKeyboard/{keyboardId}', [KeyboardDetailsController::class, 'showKeyboardDetails']);
 
