@@ -15,21 +15,16 @@
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span> --}}
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form action="{{route('showKeyboardCategory',$categoryId)}}" class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
+                    <select class="form-select" name="type">
+                        <option class="" selected value="name">Name</option>
+                        <option class="" value="price">Price</option>
+                    </select>
                 </form>
 
-		    <div class="input-group">
-                <div class="input-group-btn search-panel">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    	<span id="search_concept">Name</span> <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">Price</a></li>
-                    </ul>
-                </div>
-            </div>
+
         </div>
     </div>
 
@@ -49,6 +44,9 @@
                 </a>
                 @endforeach
             </ul>
+            <div>
+                {{ $keyboardCategories->appends(Request::except('page'))->render() }}
+            </div>
         </div>
     </div>
 </div>

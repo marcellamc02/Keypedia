@@ -11,17 +11,46 @@ use Illuminate\Support\Facades\Validator;
 
 class KeyboardController extends Controller
 {
-    public function showKeyboardCategory($categoryId)
+    public function showKeyboardCategory(Request $request,$categoryId)
     {
         $categoryList = Category::all();
-        $keyboardCategory = DB::table('categories')
-                                ->join('keyboard', 'categories.id', '=', 'keyboard.categories_id')
-                                ->where('categories.id', 'LIKE', $categoryId)
-                                ->get();
+        if($request->type == 'name'){
+            $keyboardCategory = DB::table('categories')
+            ->join('keyboard', 'categories.id', '=', 'keyboard.categories_id')
+            ->where('categories.id', 'LIKE', $categoryId)
+            ->where('keyboard.name','LIKE','%'.$request->search.'%')
+            ->paginate(8);
+        }
+        else if($request->type == 'price'){
+            $keyboardCategory = DB::table('categories')
+            ->join('keyboard', 'categories.id', '=', 'keyboard.categories_id')
+            ->where('categories.id', 'LIKE', $categoryId)
+            ->where('keyboard.price','=',$request->search)
+            ->paginate(8);
+        }
+        else{
+            $keyboardCategory = DB::table('categories')
+            ->join('keyboard', 'categories.id', '=', 'keyboard.categories_id')
+            ->where('categories.id', 'LIKE', $categoryId)
+            ->paginate(8);
+        }
         $categoryName = Category::find($categoryId)->name;
 
-        return view('category',['keyboardCategories' => $keyboardCategory , 'categoryName' => $categoryName, 'categories'=>$categoryList]);
+        return view('category',['keyboardCategories' => $keyboardCategory , 'categoryName' => $categoryName, 'categories'=>$categoryList, 'categoryId'=>$categoryId]);
     }
+
+    // public function search(Request $request, $categoryId){
+    //     $categoryList = Category::all();
+    //     $keyboardCategory = DB::table('categories')
+    //                             ->join('keyboard', 'categories.id', '=', 'keyboard.categories_id')
+    //                             ->where('categories.id', 'LIKE', $categoryId)
+    //                             ->where('keyboard.name','LIKE','%'.$request->search.'%')
+    //                             ->paginate(8);
+    //     $categoryName = Category::find($categoryId)->name;
+    //     dd($keyboardCategory,$request->search,$categoryId);
+
+    //     return view('category',['keyboardCategories' => $keyboardCategory , 'categoryName' => $categoryName, 'categories'=>$categoryList, 'categoryId'=>$categoryId]);
+    // }
 
     public function showAddKeyboard()
     {

@@ -54,6 +54,8 @@ Route::get('/login', function () {
     return view('login');
 });
 
+// Route::get('/search/{categoryId}',[KeyboardController::class,'search'])->name('search');
+
 Route::get('/changePassword',function(){
     return view('changePassword');
 });

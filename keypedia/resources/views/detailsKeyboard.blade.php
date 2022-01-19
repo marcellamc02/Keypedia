@@ -17,6 +17,9 @@
                         <p class="fw-bold">{{$keyboardDetail->name}}</p>
                         <p>Rp. {{$keyboardDetail->price}}</p>
                         <p>{{$keyboardDetail->description}}</p>
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max="5" class="me-4">
+                        <button type="button" class="btn btn-primary">Add to cart</button>
                     </div>
             @endforeach
     </div>
