@@ -36,6 +36,15 @@ class KeyboardController extends Controller
         return view('manageCategories', ['categories' => $showCategories]);
     }
 
+    public function showUpdateCategory($categoryId)
+    {
+        $showCategories = Category::all();
+        $categoryDetails = DB::table('categories')->where('categories.id', 'LIKE', $categoryId)->get();
+        $categorydName = Category::find($categoryId)->name;
+
+        return view('updateCategory', ['categories' => $showCategories , 'categoryDetails' => $categoryDetails , 'categoryName' => $categorydName]);
+    }
+
     // for MANAGER
     public function addKeyboard(Request $request)
     {

@@ -39,7 +39,7 @@
                 {{-- pake for --}}
                 @foreach($keyboardCategories as $keyboard)
                 <a href="/detailsKeyboard/{{$keyboard->id}}">
-                    <li class="card mt-3 text-decoration-none" style="width: 280px ">
+                    <li class="card mt-3 text-decoration-none" style="width: 350px ">
                         <div class="card-body text-center" >
                             <img src="{{asset($keyboard->imgPath)}}" alt="image">
                             <p class="fw-bold">{{$keyboard->name}}</p>

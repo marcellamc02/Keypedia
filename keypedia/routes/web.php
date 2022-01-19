@@ -27,7 +27,7 @@ Route::middleware('manager')->group(function(){
     Route::get('/manageCategories', [KeyboardController::class, 'showManageCategory'])->name('showManageCategory');
     Route::post('/manageCategories/update/{categoryId}', [KeyboardController::class, 'updateCategory']);
     Route::post('/manageCategories/delete/{categoryId}', [KeyboardController::class, 'deleteCategory']);
-    Route::get('/updateCategory/{categoryId}', [KeyboardController::class, 'showManageCategory']);
+    Route::get('/updateCategory/{categoryId}', [KeyboardController::class, 'showUpdateCategory']);
     Route::put('/updateCategory/{categoryId}', [KeyboardController::class, 'updateCategory']);
 });
 
@@ -40,6 +40,10 @@ Route::get('/detailsKeyboard/{keyboardId}', [KeyboardDetailsController::class, '
 Route::get('/delete-category', function(){
     return view('manageCategories');
 })->name('manageCategories');
+
+Route::get('/update-category', function(){
+    return view('updateCategory');
+})->name('updateCategory');
 
 Route::get('/register', function () {
     return view('register');

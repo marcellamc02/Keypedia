@@ -34,6 +34,7 @@
                   </li>
                 @endif
 
+
                 {{-- untuk manager --}}
                 @if (Auth::user()->role_id == 1)
                 <li class="nav-item dropdown">
