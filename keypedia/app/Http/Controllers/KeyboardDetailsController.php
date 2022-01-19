@@ -10,9 +10,10 @@ class KeyboardDetailsController extends Controller
 {
     public function showKeyboardDetails($keyboardId)
     {
+        $categoryList = Category::all();
         $keyboardDetails = DB::table('keyboard')->where('keyboard.id', 'LIKE', $keyboardId)->get();
         $keyboardName = Keyboard::find($keyboardId)->name;
 
-        return view('detailsKeyboard',['keyboardDetails' => $keyboardDetails , 'keyboardName' => $keyboardName]);
+        return view('detailsKeyboard',['keyboardDetails' => $keyboardDetails , 'keyboardName' => $keyboardName, 'categories'=>$categoryList]);
     }
 }

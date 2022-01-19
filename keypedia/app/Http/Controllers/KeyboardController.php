@@ -13,13 +13,14 @@ class KeyboardController extends Controller
 {
     public function showKeyboardCategory($categoryId)
     {
+        $categoryList = Category::all();
         $keyboardCategory = DB::table('categories')
                                 ->join('keyboard', 'categories.id', '=', 'keyboard.categories_id')
                                 ->where('categories.id', 'LIKE', $categoryId)
                                 ->get();
         $categoryName = Category::find($categoryId)->name;
 
-        return view('category',['keyboardCategories' => $keyboardCategory , 'categoryName' => $categoryName]);
+        return view('category',['keyboardCategories' => $keyboardCategory , 'categoryName' => $categoryName, 'categories'=>$categoryList]);
     }
 
     public function showAddKeyboard()
@@ -50,7 +51,7 @@ class KeyboardController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'categories_id' => 'required',
-            'name' => 'required|min:5', 
+            'name' => 'required|min:5',
             'price' => 'required|integer|min:30',
             'description' => 'required|min:20',
             'imgPath' => 'required'
@@ -77,7 +78,7 @@ class KeyboardController extends Controller
         {
             return back(404);
         }
-        
+
         if(File::exists($selected->imgPath)) {
             File::delete($selected->imgPath);
         }
@@ -131,7 +132,7 @@ class KeyboardController extends Controller
         }
 
         $selected->delete();
-        
+
         return back()->with('success', 'Category successfully deleted.');
     }
 }

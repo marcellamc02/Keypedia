@@ -11,14 +11,14 @@
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
             <input type="hidden" name="search_param" value="all" id="search_param">
-                <input type="text" class="form-control" name="x" placeholder="Search">
+                {{-- <input type="text" class="form-control" name="x" placeholder="Search">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
-                {{-- <form class="d-flex">
+                </span> --}}
+                <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
-                </form> --}}
+                </form>
 
 		    <div class="input-group">
                 <div class="input-group-btn search-panel">

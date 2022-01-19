@@ -23,7 +23,7 @@ Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCa
 
 Route::middleware('manager')->group(function(){
     Route::get('/addKeyboard', [KeyboardController::class, 'showAddKeyboard'])->name('showAddKeyboard');
-    Route::post('/addKeyboard', [KeyboardController::class, 'addKeyboard']);  
+    Route::post('/addKeyboard', [KeyboardController::class, 'addKeyboard']);
     Route::get('/manageCategories', [KeyboardController::class, 'showManageCategory'])->name('showManageCategory');
     Route::post('/manageCategories/update/{categoryId}', [KeyboardController::class, 'updateCategory']);
     Route::post('/manageCategories/delete/{categoryId}', [KeyboardController::class, 'deleteCategory']);
@@ -33,6 +33,7 @@ Route::middleware('manager')->group(function(){
 
 Route::middleware('user')->group(function(){
     Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory'])->name('showKeyboardCategory');
+
 });
 
 Route::get('/detailsKeyboard/{keyboardId}', [KeyboardDetailsController::class, 'showKeyboardDetails']);
@@ -48,9 +49,15 @@ Route::get('/update-category', function(){
 Route::get('/register', function () {
     return view('register');
 });
+
 Route::get('/login', function () {
     return view('login');
 });
+
+Route::get('/changePassword',function(){
+    return view('changePassword');
+});
+
 Route::post('/register',[RegisterController::class, 'register'])->name('register');
 Route::post('/login',[LoginController::class, 'login'])->name('login');
 
