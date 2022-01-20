@@ -43,7 +43,7 @@
 
                 <label for="button" class="col-sm-4 col-form-label text-end fw-bold"></label>
                 <div class="col-sm-7 text-start">
-                    <button type="add" class="btn btn-primary">Add</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
                 </div>
             </div>
         </form>

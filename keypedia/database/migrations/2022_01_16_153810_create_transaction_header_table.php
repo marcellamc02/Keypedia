@@ -17,6 +17,8 @@ class CreateTransactionHeaderTable extends Migration
             $table->id();
             $table->bigInteger('userId')->unsigned();
             $table->foreign('userId')->references('id')->on('users');
+            // $table->bigInteger('cartId')->unsigned();
+            // $table->foreign('cardId')->references('id')->on('cart');
             $table->string('date');
             $table->timestamps();
         });

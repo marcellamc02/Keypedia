@@ -60,8 +60,8 @@
                         {{ Auth::user()->username }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">My Cart</a></li>
-                        <li><a class="dropdown-item" href="#">Transaction History</a></li>
+                        <li><a class="dropdown-item" href="{{route('showCart')}}">My Cart</a></li>
+                        <li><a class="dropdown-item" href="{{route('showTransactionDetail')}}">Transaction History</a></li>
                         <li><a class="dropdown-item" href="#">Change Password</a></li>
                         <form action="{{route('logout')}}" method="post">
                           @csrf
