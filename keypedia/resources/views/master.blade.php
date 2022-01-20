@@ -44,7 +44,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                       <li><a class="dropdown-item" href="{{route('showAddKeyboard')}}">Add Keyboard</a></li>
                         <li><a class="dropdown-item" href="{{route('showManageCategory')}}">Manage Categories</a></li>
-                        <li><a class="dropdown-item" href="#">Change Password</a></li>
+                        <li><a class="dropdown-item" href="{{route('changePassword')}}">Change Password</a></li>
                         <form action="{{route('logout')}}" method="post">
                           @csrf
                         <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
@@ -62,7 +62,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="{{route('showCart')}}">My Cart</a></li>
                         <li><a class="dropdown-item" href="{{route('showTransactionDetail')}}">Transaction History</a></li>
-                        <li><a class="dropdown-item" href="#">Change Password</a></li>
+                        <li><a class="dropdown-item" href="{{route('changePassword')}}">Change Password</a></li>
                         <form action="{{route('logout')}}" method="post">
                           @csrf
                         <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>

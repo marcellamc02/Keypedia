@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Validator;
 
 class TransactionDetailController extends Controller
 {
-    // public function showTransactionDetail()
-    // {
-    //     $transactionDetail = Keyboard::join('keyboard', 'keyboard.id', '=', 'cart.keyboardId')
-    //                                 ->join('')
-    // }
+    public function showTransactionDetail()
+    {
+        // $transactionDetail = Keyboard::join('keyboard', 'keyboard.id', '=', 'cart.keyboardId')
+        //                             ->join('')
+    }
 }

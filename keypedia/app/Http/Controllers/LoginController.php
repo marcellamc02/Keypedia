@@ -28,4 +28,9 @@ class LoginController extends Controller
         
         return redirect()->route('home.list');
     }
+
+    public function changePassword()
+    {
+        
+    }
 }

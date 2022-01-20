@@ -22,10 +22,11 @@ use Illuminate\Support\Facades\Route;
 */
 Route::redirect('/', '/home');
 Route::get('/home', [HomeController::class, 'showHome'])->name('home.list');
-Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory'])->name('showKeyboardCategory');
 Route::get('/detailsKeyboard/{keyboardId}', [KeyboardDetailsController::class, 'showKeyboardDetails']);
+Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory'])->name('showKeyboardCategory');
 
 Route::middleware('manager')->group(function(){
+    Route::get('/category/{categoryId}', [KeyboardController::class, 'showKeyboardCategory'])->name('showKeyboardCategory');
     Route::get('/addKeyboard', [KeyboardController::class, 'showAddKeyboard'])->name('showAddKeyboard');
     Route::post('/addKeyboard', [KeyboardController::class, 'addKeyboard']);
     Route::get('/manageCategories', [KeyboardController::class, 'showManageCategory'])->name('showManageCategory');
@@ -59,14 +60,11 @@ Route::get('/register', function () {
 Route::get('/login', function () {
     return view('login');
 });
-
-// Route::get('/search/{categoryId}',[KeyboardController::class,'search'])->name('search');
-
-Route::get('/changePassword',function(){
+Route::get('/changePassword', function () {
     return view('changePassword');
-});
-
+})->name('changePassword');
+// Route::get('/search/{categoryId}',[KeyboardController::class,'search'])->name('search');
+// Route::get('/changePassword', [LoginController::class, 'changePassword'])->name('changePassword');
 Route::post('/register',[RegisterController::class, 'register'])->name('register');
 Route::post('/login',[LoginController::class, 'login'])->name('login');
-
 Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
